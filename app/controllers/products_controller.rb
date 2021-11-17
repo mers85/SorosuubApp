@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  include ActionView::RecordIdentifier
   before_action :set_product, only: [:edit, :update, :show, :destroy]
 
   def index
@@ -38,8 +39,12 @@ class ProductsController < ApplicationController
   end
 
   def destroy 
-    @product.destroy!
-    redirect_to products_path,  notice: "Product deleted"
+    @product.destroy
+    respond_to do |format|
+      format.html { redirect_to products_path,  notice: "Product deleted" }
+      format.turbo_stream {render turbo_stream: turbo_stream.remove(dom_id(@product))}
+    end
+   
   end
 
   private

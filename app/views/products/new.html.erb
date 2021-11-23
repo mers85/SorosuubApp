@@ -1,3 +1,14 @@
-<h2>New Product</h2>
+<div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8 mx-auto">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+      New Product
+    </h2>
+    <p class="mt-2 text-center text-sm text-gray-600">
+      adds a product to the catalog
+    </p>
+  </div>
+  
+  <%= render("form", product: @product) %>
 
-<%= render("form", product: @product) %>
+
+</div>
